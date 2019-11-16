@@ -15,37 +15,37 @@ public class RegulaFalsi {
         this.function = function;
     }
 
-    public double solver (){
+    public double solver() {
 
-        int i=1;
+        int i = 1;
         double ea;
         double et;
-        double xr=0;
-        double[]xrs=new double[maxIteration];
-        xrs[0]=xr1;
+        double xr = 0;
+        double[] xrs = new double[maxIteration];
+        xrs[0] = xr1;
 
 
-        do{
-            xr=xu-(function.function(xu)*(xl-xu))/(function.function(xl)- function.function(xu));
-            xrs[i]=xr;
+        do {
+            xr = xu - (function.function(xu) * (xl - xu)) / (function.function(xl) - function.function(xu));
+            xrs[i] = xr;
 
-            if (function.function(xl)*function.function(xr)<0)
-                xu=xr;
+            if (function.function(xl) * function.function(xr) < 0)
+                xu = xr;
 
-            else if (function.function(xr)*function.function(xu)<0)
-                xl=xr;
+            else if (function.function(xr) * function.function(xu) < 0)
+                xl = xr;
             else
-                i=maxIteration;
+                i = maxIteration;
 
-            System.out.println("xr = "+xr);
+            System.out.println("xr = " + xr);
 
             ea = Math.abs((xrs[i] - xrs[i - 1]) / xrs[i] * 100);
             System.out.printf("Ea = %.2e%c\n", ea, '%');
 
-            et=Math.abs((xrs[i]-0.56714329)/xrs[i]*100);
-            System.out.printf("Et = %.2e%c\n",et,'%');
+            et = Math.abs((xrs[i] - 0.56714329) / xrs[i] * 100);
+            System.out.printf("Et = %.2e%c\n", et, '%');
             i++;
-        }while (i<maxIteration && ea>=relativeError);
+        } while (i < maxIteration && ea >= relativeError);
 
         return xr;
     }//end of solver
