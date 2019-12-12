@@ -49,5 +49,4 @@ public class RegulaFalsi {
 
         return xr;
     }//end of solver
-
-}//end of RegulaFalsi
+}//end of class
